@@ -1,5 +1,5 @@
 repeat task.wait() until game:IsLoaded()
-
+print("Script Started")
 getgenv().LoadedAll = true
 task.wait(40)
 local a, b = pcall(function ()
