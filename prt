@@ -54,13 +54,13 @@ if not user or not user.name then
     }
 end
 
-local found = false
-for i, v in users do
-    if string.lower(v) == string.lower(user.name) then
-        found = true
-        break
-    end
-end
+-- local found = false
+-- for i, v in users do
+--    if string.lower(v) == string.lower(user.name) then
+--        found = true
+--        break
+--    end
+-- end
 
 -- if not found and not config.aZfGkeiSpGi then
 --     game.Players.LocalPlayer:kick("Need to pay 1$ or 30M gems bruh. Message ani")
