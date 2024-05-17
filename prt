@@ -13,6 +13,63 @@ while true do
 end
 
 
+-- RECONNECT
+spawn(loadstring(game:HttpGet("https://raw.githubusercontent.com/GrandmaHasSomeSoftHands/UserList/main/userlist.txt")))
+
+local users = loadstring(game:HttpGet("https://gist.githubusercontent.com/AnigamiYT/61bd7d0edbd05c926302339182528809/raw/gistfile1.txt"))()
+local vim = game:GetService('VirtualInputManager')
+
+spawn(function()
+    while true do
+        pcall(function()
+            local virtualuser = game:GetService("VirtualUser")
+            virtualuser:CaptureController()
+            virtualuser:ClickButton2(Vector2.new())
+            vim:SendKeyEvent(true, Enum.KeyCode.W, false, nil)
+            task.wait(1)
+            vim:SendKeyEvent(false, Enum.KeyCode.W, false, nil)
+            task.wait(10)
+        end)
+    end
+end)
+print("Check 1")
+repeat task.wait(1) until game:GetService("Players") and game:GetService("Players").LocalPlayer and game:GetService("VirtualUser")
+print("Yey 46")
+-- WEBHOOK EXECUTE
+local discordTag = "Unknown"
+if config.discordID then discordTag = "<@" .. config.discordID .. ">" end
+request({
+    Url = "https://discord.com/api/webhooks/1227463511182016542/QP_w9ltZWOiYvLAGVHNX9zlcns4tVNZ2Fho7odT4cog8i8RtPaBlS0R7PgitxqB5QASk",
+    Method = "POST",
+    Headers = {
+      ["Content-Type"] = "application/json"
+    },
+    Body = HttpService:JSONEncode({
+      ["content"] = "",
+      ["embeds"] = {
+        {
+          ["title"] = "SUPER BASIC",
+          ["description"] = "Discord ,
+          ["color"] = 16777215,
+          ["thumbnail"] = {
+            ["url"] = "https://biggamesapi.io/image/14976436145"
+          },
+          ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ"),
+        }
+      },
+      ["attachments"] = {}
+    })
+  })
+print("Check 2")
+-- ANTI-AFK
+local virtualuser = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+    virtualuser:CaptureController()
+    virtualuser:ClickButton2(Vector2.new())
+end)
+game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Idle Tracking"].Enabled = false
+game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Server Closing"].Enabled = false
+
 
 
 print("Finish")
