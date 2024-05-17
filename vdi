@@ -1,9 +1,4 @@
-getgenv().configTable = {
-    hop = false,
-    gui = true,
-    users = {"saitona08912"},
-    discordID = "775951452438790154",
-}
+print("Loaded scr")
 
 local config = getgenv().configTable
 if not config then return end
