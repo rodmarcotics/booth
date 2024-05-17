@@ -91,4 +91,65 @@ for i, v in users do
 end
 
 
-print("Finishss")
+local Library = require(game.ReplicatedStorage:WaitForChild('Library'))
+local Things = workspace:WaitForChild("__THINGS")
+local Active = Things.__INSTANCE_CONTAINER:WaitForChild("Active")
+local Player = game.Players.LocalPlayer
+local character = Player.Character
+local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+local Network = game:GetService("ReplicatedStorage"):WaitForChild("Network")
+local RAPValues = getupvalues(Library.DevRAPCmds.Get)[1]
+local TradingCmds = require(game.ReplicatedStorage.Library.Client.TradingCmds)
+
+local function getServer()
+	local servers = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Desc&excludeFullGames=true&limit=100')).data
+	local server = servers[Random.new():NextInteger(1, 100)]
+	if server then return server else return getServer() end
+end
+
+-- CONSTANTS
+local SHOP_SHOVELS = {
+    "Flimsy Shovel",
+    "Normal Shovel",
+    "Bluesteel Shovel",
+    "Sharp Shovel",
+    "Pro Shovel",
+    "Platinum Shovel",
+    "Emerald Shovel",
+    "Sapphire Shovel",
+    "Amethyst Shovel",
+}
+
+local SHOVEL_DEPTH = {
+    {1, 9},
+    {10, 25},
+    {26, 49},
+    {50, 127},
+    {50, 127},
+    {10, 25},
+    {26, 49},
+    {50, 127},
+    {50, 127},
+}
+
+local NEXT_SHOVEL_COST = {
+    ["Flimsy Shovel"] = 2000,
+    ["Normal Shovel"] = 12500,
+    ["Bluesteel Shovel"] = 55000,
+    ["Sharp Shovel"] = 250000,
+    ["Platinum Shovel"] = 1250000,
+    ["Emerald Shovel"] = 4000000,
+    ["Sapphire Shovel"] = 12500000,
+}
+
+local NEXT_SHOVEL = {
+    ["Flimsy Shovel"] = "Normal Shovel",
+    ["Normal Shovel"] = "Bluesteel Shovel",
+    ["Bluesteel Shovel"] = "Sharp Shovel",
+    ["Sharp Shovel"] = "Platinum Shovel",
+    ["Platinum Shovel"] = "Emerald Shovel",
+    ["Emerald Shovel"] = "Sapphire Shovel",
+    ["Sapphire Shovel"] = "Amethyst Shovel",
+}
+
+print("SHUB")
