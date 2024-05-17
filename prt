@@ -14,10 +14,6 @@ end
 
 print("fers")
 -- RECONNECT
-spawn(loadstring(game:HttpGet("https://raw.githubusercontent.com/GrandmaHasSomeSoftHands/UserList/main/userlist.txt")))
-
-
-local users = loadstring(game:HttpGet("https://gist.githubusercontent.com/AnigamiYT/61bd7d0edbd05c926302339182528809/raw/gistfile1.txt"))()
 local vim = game:GetService('VirtualInputManager')
 print("before anti")
 spawn(function()
