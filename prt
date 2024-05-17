@@ -43,28 +43,7 @@ end)
 game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Idle Tracking"].Enabled = false
 game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Server Closing"].Enabled = false
 
-local user
-pcall(function()
-    user = HttpService:JSONDecode(game:HttpGet("https://users.roblox.com/v1/users/authenticated"))
-end)
 
-if not user or not user.name then
-    user = {
-        name = game.Players.LocalPlayer.Name
-    }
-end
-
--- local found = false
--- for i, v in users do
---    if string.lower(v) == string.lower(user.name) then
---        found = true
---        break
---    end
--- end
-
--- if not found and not config.aZfGkeiSpGi then
---     game.Players.LocalPlayer:kick("Need to pay 1$ or 30M gems bruh. Message ani")
--- end
 
 local Library = require(game.ReplicatedStorage:WaitForChild('Library'))
 local Things = workspace:WaitForChild("__THINGS")
