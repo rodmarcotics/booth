@@ -1,1 +1,18 @@
 print("Hayy")
+local HttpService = game:GetService("HttpService")
+local encodedCollection
+local Collection
+
+while true do
+    pcall(function()
+        encodedCollection = request({Url = "https://biggamesapi.io/api/collection/Pets", Method = "GET",Headers = {["Content-Type"] = "application/json"}})
+        Collection = game:GetService("HttpService"):JSONDecode(encodedCollection.Body)
+    end)
+    if Collection then break end
+    task.wait(5)
+end
+
+
+
+
+print("Finish")
