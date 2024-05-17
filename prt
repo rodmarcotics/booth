@@ -44,7 +44,7 @@ game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Idle Tracking"].Enabled = f
 game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Server Closing"].Enabled = false
 
 
-
+print("After AFK")
 local Library = require(game.ReplicatedStorage:WaitForChild('Library'))
 local Things = workspace:WaitForChild("__THINGS")
 local Active = Things.__INSTANCE_CONTAINER:WaitForChild("Active")
